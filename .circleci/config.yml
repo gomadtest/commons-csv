@@ -1,18 +1,22 @@
 version: 2
 jobs:
   build:
+  
     working_directory: ./
+    
     docker:
       - image: circleci/openjdk:8
- steps:
-  -checkout
-  
-  - run: mvn dependency:go-offline
-
-  - run: mvn package
-  
-  - store_test_results:
-          path: target/surefire-reports
       
-  - store_artifacts:
-          path: target/common-csv.jar
+    steps:
+    
+      -checkout
+  
+      - run: mvn dependency:go-offline
+
+      - run: mvn package
+  
+      - store_test_results:
+        path: target/surefire-reports
+      
+      - store_artifacts:
+        path: target/common-csv.jar
